@@ -58,3 +58,10 @@ The log entry with the code HTTP: GET / HTTP/1.1 shows the browser is requesting
 14:25:29.576510 IP greatrecipesforme.com.http > your.machine.56378: Flags [S.], seq 1993648018, ack 1020702884, win 65483, options [mss 65495,sackOK,TS val 3302989649 ecr 3302989649,nop,wscale 7], length 0
 ```
 Then, a sudden change happens in the logs. The traffic is routed from the source computer to the DNS server again using port .52444 (your.machine.52444 > dns.google.domain) to make another DNS resolution request. This time, the DNS server routes the traffic to a new IP address (192.0.2.172) and its associated URL (greatrecipesforme.com.http).<p></p> The traffic changes to a route between the source computer and the spoofed website (outgoing traffic: IP your.machine.56378 > greatrecipesforme.com.http and incoming traffic: greatrecipesforme.com.http > IP your.machine.56378). <p></p>Note that the port number (.56378) on the source computer has changed again when redirected to a new website.
+
+# Remediation for brute force network attacks
+One security measure the team plans to implement to protect against brute force attacks is two-factor authentication (2FA). This 2FA plan will include an additional requirement for users to validate their identification by confirming a one-time password (OTP) sent to either their email or phone. Once the user confirms their identity through their login credentials and the OTP, they will gain access to the system. Any malicious actor that attempts a brute force attack will not likely gain access to the system because it requires additional authorization. 
+
+Another option is to review or audit passowrd policies that include minimum password character of a mandatory length (e.g 8 alphanumeric characters), password timeout and incorrect password limits advisably 3 attempts before another opportunity to logon.
+
+Review of configuration settings for other servers e.g email server default passwords and usernames.
